@@ -30,12 +30,12 @@ public class Wasd_Tran : MonoBehaviour
             pos.x -= speed * Time.deltaTime;
         }
         //If I press down arrow move position down
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             pos.y -= speed * Time.deltaTime;
         }
         //If I press up arrow move position
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             pos.y += speed * Time.deltaTime;
         }

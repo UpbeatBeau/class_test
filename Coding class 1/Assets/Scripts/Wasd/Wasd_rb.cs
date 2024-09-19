@@ -10,12 +10,23 @@ public class Wasd_rb : MonoBehaviour
     private int i = 8;
     
     private Rigidbody2D rb;
+
+    private Color cb;
+
+    private Color defaultColor = Color.white;
+
+    public GameManager gameManager;
     
     // Start is called before the first frame update
     void Start()
     {
      //Find the Rigibody on the object this script is on
      rb = GetComponent<Rigidbody2D>();
+
+        cb = GetComponent<SpriteRenderer>().color;
+
+        //Find the GameManager
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -51,15 +62,24 @@ public class Wasd_rb : MonoBehaviour
         if(collision.transform.tag == "Player2")
         {
             //Find the Color compent of the item and change it to cyan
-            GetComponent<SpriteRenderer>().color = Color.cyan;
+            cb = Color.cyan;
         }
 
         //Make the Cube Change color when it hits player 3 cube
         if(collision.transform.tag == "Player3")
         {
-            GetComponent <SpriteRenderer>().color = Color.magenta;
+            cb = Color.magenta;
         }
 
+        //Score Plus 1
+        gameManager.sc_num ++;
+
     }
-  
+
+    //OnCollisionExit2D happens when two 2D objects with Colliders separate
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        cb = defaultColor;
+    }
+
 }

@@ -50,8 +50,16 @@ public class Wasd_rb : MonoBehaviour
         //Make the Cube change color when it hits player 2 cube
         if(collision.transform.tag == "Player2")
         {
+            //Find the Color compent of the item and change it to cyan
             GetComponent<SpriteRenderer>().color = Color.cyan;
         }
+
+        //Make the Cube Change color when it hits player 3 cube
+        if(collision.transform.tag == "Player3")
+        {
+            GetComponent <SpriteRenderer>().color = Color.magenta;
+        }
+
     }
   
 }

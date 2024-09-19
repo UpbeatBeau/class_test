@@ -43,4 +43,15 @@ public class Wasd_rb : MonoBehaviour
             rb.AddForce(Vector2.down * forceAmt);
         }
     }
+
+    //OnCollisionEnter2D happens when two 2D objects with Colliders hit each other
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Make the Cube change color when it hits player 2 cube
+        if(collision.transform.tag == "Player2")
+        {
+            GetComponent<SpriteRenderer>().color = Color.cyan;
+        }
+    }
+  
 }

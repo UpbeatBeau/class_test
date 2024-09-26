@@ -68,6 +68,8 @@ public class Wasd_rb : MonoBehaviour
         {
             cb.color = Color.magenta;
         }
+
+        GameManager.instance.StartGame();
     }
 
     //OnCollisionExit2D happens when two 2D objects with Colliders separate

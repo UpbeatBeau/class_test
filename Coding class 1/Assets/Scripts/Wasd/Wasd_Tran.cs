@@ -5,6 +5,8 @@ using UnityEngine;
 public class Wasd_Tran : MonoBehaviour
 {
     //Variables
+    public static Wasd_Tran instance;
+
     public float speed = 3f;
 
     public GameObject pl2;
@@ -18,6 +20,15 @@ public class Wasd_Tran : MonoBehaviour
     {
         pl2 = this.gameObject;
         //gameManager = FindObjectOfType<GameManager>();
+        /*if(instance == null)
+        {
+            DontDestroyOnLoad(gameObject);
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }*/
     }
     
 
@@ -63,19 +74,26 @@ public class Wasd_Tran : MonoBehaviour
             {
                 //gameManager.sc_num++;
                 GameManager.instance.sc_num++;
-            }else if (collision.transform.tag == "Player3")
+                var pos = new Vector2(Random.Range(-7, 7), Random.Range(-2, 3));
+                Instantiate(pl2, pos, Quaternion.identity);
+
+                //Destroy player
+                Destroy(this.gameObject);
+            }
+            else if (collision.transform.tag == "Player3")
             {
                 //gameManager.p3sc_num++;
                 GameManager.instance.p3sc_num++;
+                var pos = new Vector2(Random.Range(-7, 7), Random.Range(-2, 3));
+                Instantiate(pl2, pos, Quaternion.identity);
+
+                //Destroy player
+                Destroy(this.gameObject);
             }
-
-
+            
             //Spawn a new Player 2 at a random location
-            var pos = new Vector2(Random.Range(-7, 7), Random.Range(-2, 3));
-            Instantiate(pl2, pos, Quaternion.identity);
+            
 
-            //Destroy player
-            Destroy(this.gameObject);
             spawn = true;
         }
 

@@ -11,13 +11,13 @@ public class Wasd_Tran : MonoBehaviour
 
     private bool spawn = true;
 
-    public GameManager gameManager;
+    //public GameManager gameManager;
 
     //Awake happens on spawn of an Item
     private void Awake()
     {
         pl2 = this.gameObject;
-        gameManager = FindObjectOfType<GameManager>();
+        //gameManager = FindObjectOfType<GameManager>();
     }
     
 
@@ -61,10 +61,12 @@ public class Wasd_Tran : MonoBehaviour
             spawn = false;
             if(collision.transform.tag == "Player")
             {
-                gameManager.sc_num++;
+                //gameManager.sc_num++;
+                GameManager.instance.sc_num++;
             }else if (collision.transform.tag == "Player3")
             {
-                gameManager.p3sc_num++;
+                //gameManager.p3sc_num++;
+                GameManager.instance.p3sc_num++;
             }
 
 
